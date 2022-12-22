@@ -32,41 +32,38 @@ public class StudentController {
 
     }
 
-//    @GetMapping("getStudent")
-//    public List<Student> getStudent(){
-//
-//        return studentRepository.findAll();
-//    }
-//    @GetMapping("getById/{id}")
-//    public Optional<Student> getStudentById(@PathVariable Integer id){
-//        return studentRepository.findById(id);
-//    }
-//    @GetMapping("getById/{id}")
-//    public Student getStudentById(@PathVariable Integer id){
-//        return studentRepository.getReferenceById(id);
-//    }
+    @GetMapping("getStudent")
+    public List<Student> getStudent(){
 
-//@PutMapping("update")
-//public String updateStudent(@RequestBody Student student){
-//    Student student1= studentRepository.getReferenceById(student.getId());
-//    student1.setAddress(student.getAddress());
-//    student1.setName(student.getName());
-//    student1.setNumber(student.getNumber());
-//
-//    studentRepository.save(student1);
-//    return "record Updated";
-//}
-//    @DeleteMapping("delete/{id}")
-//    public String deleteStudent(@PathVariable("id") Integer id){
-//        studentRepository.deleteById(id);
-//        return "record deleted";
-//    }
-//    @DeleteMapping("deleteByIds/{id}")
-//    public String deleteStudent(@PathVariable("id") List<Integer> id){
-//        studentRepository.deleteAllById(id);
-//        return "records deleted";
-//
-//    }
+        return studentRepository.findAll();
+    }
+    @GetMapping("getById/{id}")
+    public Optional<Student> getStudentById(@PathVariable Integer id){
+        return studentRepository.findById(id);
+    }
+
+
+@PutMapping("update")
+public String updateStudent(@RequestBody Student student){
+    Student student1= studentRepository.getReferenceById(student.getId());
+    student1.setAddress(student.getAddress());
+    student1.setName(student.getName());
+    student1.setNumber(student.getNumber());
+
+    studentRepository.save(student1);
+    return "record Updated";
+}
+    @DeleteMapping("delete/{id}")
+    public String deleteStudent(@PathVariable("id") Integer id){
+        studentRepository.deleteById(id);
+        return "record deleted";
+    }
+    @DeleteMapping("deleteByIds/{id}")
+    public String deleteStudent(@PathVariable("id") List<Integer> id){
+        studentRepository.deleteAllById(id);
+        return "records deleted";
+
+    }
 
     @GetMapping("getByAddress/{address}/{name}")
     public List<Student> getByAddress(@PathVariable ("address") String address,@PathVariable ("name") String name)
@@ -74,10 +71,7 @@ public class StudentController {
 
         return studentRepository.findByAddressOrName( address, name);
     }
-//    @GetMapping("getAddress")
-//    public List<String> getAddress(){
-//        return studentRepository.findDistinctAddress();
-//    }
+
     @GetMapping("getByName/{name}")
     public List<Student> getByName(@PathVariable ("name" )String name){
         return studentRepository.findByNameEquals(name);
@@ -100,6 +94,11 @@ public class StudentController {
     public List<Student> getStudentLessAge(@PathVariable ("Age") Integer Age){
         return studentRepository.findByAgeLessThan(Age);
     }
+    @GetMapping("getStudentGreaterAge/{Age}")
+    public List<Student> getStudentGreaterAge(@PathVariable ("Age") Integer Age){
+        return studentRepository.findByAgeGreaterThan(Age);
+    }
+
 
 
 
