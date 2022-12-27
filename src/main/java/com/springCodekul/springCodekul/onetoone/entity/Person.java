@@ -1,6 +1,7 @@
 package com.springCodekul.springCodekul.onetoone.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -8,11 +9,23 @@ import jakarta.persistence.*;
 public class Person {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
 
     private int age;
+
+    @OneToOne(mappedBy = "person", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private Aadhar aadhar;
+
+    public Aadhar getAadhar() {
+        return aadhar;
+    }
+
+    public void setAadhar(Aadhar aadhar) {
+        this.aadhar = aadhar;
+    }
 
     public Integer getId() {
         return id;
