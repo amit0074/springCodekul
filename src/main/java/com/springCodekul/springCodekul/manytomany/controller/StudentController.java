@@ -21,7 +21,6 @@ public class StudentController {
 
     @PostMapping("saveStud")
     public String saveStud(@RequestBody Students students){
-
         studentRepo.save(students);
         return "Student saved...";
     }
@@ -29,7 +28,6 @@ public class StudentController {
 
     @PostMapping("saveCourse")
     public String saveCourse(@RequestBody Courses courses){
-
         coursesRepo.save(courses);
         return "Course saved...";
     }
