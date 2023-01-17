@@ -1,5 +1,7 @@
 package com.springCodekul.springCodekul;
 
+import com.springCodekul.springCodekul.aop.BoysStudent;
+import com.springCodekul.springCodekul.aop.GirlsStudent;
 import com.springCodekul.springCodekul.di.Company;
 import com.springCodekul.springCodekul.ioc.Jio;
 import com.springCodekul.springCodekul.ioc.Vodafone;
@@ -29,6 +31,11 @@ public class SpringCodekulApplication {
 
 		Company company=context.getBean(Company.class);
 		company.display();
+
+		BoysStudent boysStudent=context.getBean(BoysStudent.class);
+		GirlsStudent girlsStudent=context.getBean(GirlsStudent.class);
+
+		boysStudent.boysStudy();
 
 
 	}
